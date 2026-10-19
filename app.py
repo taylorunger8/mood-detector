@@ -2,20 +2,23 @@ import streamlit as st
 import joblib
 import pandas as pd
 import numpy as np
+from pathlib import Path
 
 st.set_page_config(page_title="Mood Detector", layout="centered")
 st.title("Mood Detector")
 
 @st.cache_resource
 def load_model():
-    return joblib.load("mood_baseline.joblib")
+    """Load the trained model, or train it on first run (about 15 seconds)."""
+    if Path("mood_model.joblib").exists():
+        return joblib.load("mood_model.joblib")
+    import train
+    with st.spinner("Training the model on 20,000 labeled sentences..."):
+        train.main([])
+    return joblib.load("mood_model.joblib")
 
-try:
-    model = load_model()
-    labels = model.classes_
-except Exception as e:
-    st.error("Model file not found. Run 'python train_baseline.py' first.")
-    st.stop()
+model = load_model()
+labels = model.classes_
 
 st.write("Type a message. Click Detect.")
 

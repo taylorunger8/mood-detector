@@ -2,3 +2,4 @@ __pycache__/
 *.pyc
 .venv/
 .DS_Store
+mood_model.joblib

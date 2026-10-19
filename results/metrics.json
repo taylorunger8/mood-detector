@@ -1,0 +1,18 @@
+{
+  "validation": {
+    "accuracy": 0.9065,
+    "macro_f1": 0.8813
+  },
+  "test": {
+    "accuracy": 0.8925,
+    "macro_f1": 0.8543
+  },
+  "test_per_class_f1": {
+    "sadness": 0.9338,
+    "joy": 0.9149,
+    "love": 0.7753,
+    "anger": 0.8937,
+    "fear": 0.8598,
+    "surprise": 0.7484
+  }
+}
