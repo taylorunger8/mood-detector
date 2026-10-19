@@ -27,14 +27,20 @@ import matplotlib.pyplot as plt  # noqa: E402
 from matplotlib.colors import LinearSegmentedColormap  # noqa: E402
 
 LABELS = ["sadness", "joy", "love", "anger", "fear", "surprise"]  # dair-ai label order
-HF_URL = "https://huggingface.co/datasets/dair-ai/emotion/resolve/main/split/{}-00000-of-00001.parquet"
+HF_REPO = "dair-ai/emotion"
+HF_REVISION = "cab853a1dbdf4c42c2b3ef2173804746df8825fe"  # pinned so results are reproducible
 SPLITS = {"train": "train", "val": "validation", "test": "test"}
 
 
 def load_split(name, data_dir=None):
+    """Return one split as a DataFrame with columns text, label (label = emotion name)."""
     if data_dir:
         return pd.read_csv(Path(data_dir) / f"{name}.txt", sep=";", names=["text", "label"], quoting=3)
-    df = pd.read_parquet(HF_URL.format(SPLITS[name]))
+    from huggingface_hub import hf_hub_download  # cached in ~/.cache/huggingface after the first run
+
+    path = hf_hub_download(HF_REPO, f"split/{SPLITS[name]}-00000-of-00001.parquet",
+                           repo_type="dataset", revision=HF_REVISION)
+    df = pd.read_parquet(path)
     df["label"] = df["label"].map(dict(enumerate(LABELS)))
     return df[["text", "label"]]
 
