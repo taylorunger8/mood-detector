@@ -1,7 +1,12 @@
+# App (what Streamlit Community Cloud installs). Lightweight: no PyTorch needed to serve.
+streamlit
+onnxruntime
+tokenizers
+numpy
 pandas
+# TF-IDF fallback model (train.py), trained on first launch if needed
 pyarrow
 scikit-learn
 joblib
-numpy
 matplotlib
-streamlit
+huggingface_hub
