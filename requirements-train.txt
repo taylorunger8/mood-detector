@@ -1,0 +1,5 @@
+# Extra packages to fine-tune DistilBERT (train_transformer.py) and run compare.py
+-r requirements.txt
+torch
+transformers
+onnx

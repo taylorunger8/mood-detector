@@ -3,3 +3,5 @@ __pycache__/
 .venv/
 .DS_Store
 mood_model.joblib
+models/distilbert-emotion/
+*.part

@@ -1,0 +1,61 @@
+{
+  "base_model": "distilbert-base-uncased",
+  "settings": {
+    "epochs": 2,
+    "max_length": 64,
+    "batch_size": 32,
+    "lr": 5e-05,
+    "seed": 42
+  },
+  "selected_epoch": 2,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.5348,
+      "validation": {
+        "accuracy": 0.9315,
+        "macro_f1": 0.9011
+      }
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.1285,
+      "validation": {
+        "accuracy": 0.935,
+        "macro_f1": 0.9115
+      }
+    }
+  ],
+  "validation": {
+    "accuracy": 0.935,
+    "macro_f1": 0.9115
+  },
+  "test": {
+    "accuracy": 0.9215,
+    "macro_f1": 0.8794
+  },
+  "test_per_class_f1": {
+    "sadness": 0.9644,
+    "joy": 0.9436,
+    "love": 0.8246,
+    "anger": 0.9195,
+    "fear": 0.8741,
+    "surprise": 0.75
+  },
+  "test_onnx_int8": {
+    "accuracy": 0.9205,
+    "macro_f1": 0.8765
+  },
+  "test_onnx_int8_per_class_f1": {
+    "sadness": 0.9653,
+    "joy": 0.9419,
+    "love": 0.811,
+    "anger": 0.9195,
+    "fear": 0.8761,
+    "surprise": 0.7448
+  },
+  "int8_fp32_agreement": 0.9865,
+  "test_truncated_share": 0.0015,
+  "train_minutes": 42.0,
+  "hardware": "CPU, 2 threads"
+}
