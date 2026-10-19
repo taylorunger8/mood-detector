@@ -1,0 +1,20 @@
+{
+  "hardware": "CPU, 2 threads",
+  "test_sentences": 2000,
+  "latency_sample": 200,
+  "tfidf": {
+    "size_mb": 8.3,
+    "median_ms_per_sentence_one_at_a_time": 0.6,
+    "sentences_per_second_batched": 34845.5
+  },
+  "distilbert_fp32_pytorch": {
+    "size_mb": 267.8,
+    "median_ms_per_sentence_one_at_a_time": 26.44,
+    "sentences_per_second_batched": 40.8
+  },
+  "distilbert_int8_onnx": {
+    "size_mb": 67.4,
+    "median_ms_per_sentence_one_at_a_time": 4.98,
+    "sentences_per_second_batched": 113.8
+  }
+}
